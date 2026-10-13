@@ -7,6 +7,8 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // Override default ignores of eslint-config-next.
   globalIgnores([
+    // Installed agent tooling is maintained separately from application code.
+    ".agents/skills/**",
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
