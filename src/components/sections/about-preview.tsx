@@ -6,18 +6,20 @@ export function AboutPreview() {
       <div className="page-container about-grid">
         <SectionHeading
           id="about-title"
-          label="Behind the analysis"
-          title="A professional profile, built on evidence."
-          description="This space will introduce the person behind the work: their background, contribution, and perspective on healthcare business analysis."
+          label="Professional profile"
+          title="A profile in progress."
+          description="A clear introduction to the person, target Business Analyst role, and Healthcare IT focus will appear here once the owner confirms the details."
         />
         <div className="profile-placeholder">
-          <p className="profile-label">Profile awaiting owner details</p>
+          <p className="profile-label">Identity details · owner input required</p>
           <dl>
-            <div><dt>Name</dt><dd>To be added</dd></div>
-            <div><dt>Professional focus</dt><dd>Business Analysis for Healthcare IT</dd></div>
+            <div><dt>Name</dt><dd>[Owner input required]</dd></div>
+            <div><dt>Target BA role</dt><dd>[Confirm preferred role title]</dd></div>
+            <div><dt>Healthcare IT specialization</dt><dd>[Confirm specific focus]</dd></div>
+            <div><dt>Professional summary</dt><dd>[Add after background and contribution are verified]</dd></div>
             <div id="resume"><dt>Resume</dt><dd>Awaiting an approved public version</dd></div>
           </dl>
-          <p>Role, experience, and credentials will appear only after verification.</p>
+          <p>Experience, credentials, and personal claims will appear only after verification.</p>
         </div>
       </div>
     </section>

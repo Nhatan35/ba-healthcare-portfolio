@@ -10,13 +10,13 @@ export function FeaturedProjects() {
           <SectionHeading
             id="projects-title"
             label="Featured case study previews"
-            title="Questions worth exploring."
-            description="Candidate topics for a closer look at workflows, requirements, and the decisions between them."
+            title="Projects and analysis."
+            description="Explore project drafts and candidate topics, with their contribution and evidence status clearly identified."
           />
           <p className="draft-note">Draft collection<br /><span>Evidence review pending</span></p>
         </div>
-        <div className="project-grid">{projectPreviews.map((project) => <ProjectPreview key={project.id} project={project} />)}</div>
-        <p className="collection-note">These previews are not verified professional experience. Final selection will follow evidence and permission review.</p>
+        <div className="project-grid">{projectPreviews.toSorted((a, b) => a.featuredOrder - b.featuredOrder).map((project) => <ProjectPreview key={project.id} project={project} />)}</div>
+        <p className="collection-note">These previews distinguish owner-attested activities from candidate topics. Evidence review and publication permission are pending.</p>
       </div>
     </section>
   );

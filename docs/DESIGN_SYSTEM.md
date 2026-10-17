@@ -92,13 +92,13 @@ Semantic tokens include `--background`, `--foreground`, `--surface`, `--surface-
 
 - Manrope variable display face: headlines and section/card headings, weight 550–650, restrained negative tracking. Latin and Vietnamese subsets loaded through `next/font` for headline readiness.
 - Existing Geist retained for body/navigation; Arial/sans-serif fallback. Unused Geist Mono removed. Fonts are self-hosted by Next.js; build-time font fetching may still need network. No new font package.
-- Display: fluid 36–68px depending on viewport; section headings 30–44px, contact heading up to 52px; card headings 20–24px. Base body 16px, hero 16–17px, secondary/card copy 14px, supporting labels 12–13px. Compact decorative/source labels may be 11px. No fixed text-height clipping or ellipsis.
+- Display: fluid 36–68px depending on viewport; section headings 30–44px, contact heading up to 52px; card headings 20–24px. Base body 16px, hero 16–17px, explanatory/card copy 15–16px, metadata and status labels 12–14px. Keep smaller sizes for compact decorative/source labels only. No fixed text-height clipping or ellipsis.
 - Body line height 1.65; headline 1.12; section heading 1.2; cards 1.4. Narrative measures generally 46–62 characters, not full-width walls of text.
 - Spacing primitives: 4, 8, 12, 16, 24, 32, 48, 64 and 96px. Section spacing is fluid 64–104px. Page gutters range from 20–64px. Local layout values interpolate between those anchors.
 
 ### Grid, responsive behavior and surfaces
 
-Content caps at 1280px including gutters. The desktop hero uses an asymmetric two-column grid. Competency and approach content use four columns, becoming two at 1100px and one at 480px. Projects use three columns above 800px and a single column at/below 800px. Hero, profile and contact stack at 800px. Project content heights become natural on stacked layouts.
+Content caps at 1280px including gutters. The desktop hero uses an asymmetric two-column grid. Competency and approach content use four columns, becoming two at 1100px and one at 480px. Project previews use a two-column grid above 800px and a single column at/below 800px. Appointment Management receives a restrained provisional-lead border and label while retaining its Draft / Unverified badge. Hero, profile and contact stack at 800px. Project content heights become natural on stacked layouts.
 
 The header stays in document flow. At 800px, navigation becomes a permanently visible second row; there is no hidden mobile menu or focus trap. Header content can wrap at text zoom. The resume utility is omitted on smaller headers but its availability record remains in About. All primary navigation destinations are current homepage anchors, not unbuilt page routes.
 
@@ -111,9 +111,9 @@ Radius: 8px actions/nodes, 16px project/profile cards, 24px hero diagram, rounde
 | Primary action link | Teal fill, white text, minimum 48px height | Darker teal; inset pressed feedback without layout shift | 3px teal outline with 5px offset. |
 | Secondary action link | White with subtle border, navy text | Teal border, mist fill | Same visible focus treatment. |
 | Navigation / text links | Descriptive labels; minimum 44px navigation target | Teal and underline, no movement | Native anchor keyboard behavior and focus outline. |
-| Project card | Draft/Unverified badge, question and proposed focus | Card itself is not clickable; native summary expands inline | Summary has visible focus; unique accessible case name; plus/minus adds a visual cue to native open state. |
+| Project card | Draft/Unverified badge, question and proposed focus; Appointment Management also says provisional primary case study | Card itself is not clickable; native summary expands inline. C1 may list potential future evidence areas only with an explicit statement that artifacts do not exist yet. | Summary has visible focus; unique accessible case name; plus/minus adds a visual cue to native open state. |
 | Language control | EN is a current-language indicator | No switching behavior is claimed | VI is a disabled native button; visible “Vietnamese planned” explanation and accessible description. |
-| Resume/contact | Honest availability text | No fake downloads, email links, send actions or form | Resume anchor reaches status; contact CTA reaches contact availability. |
+| Resume/contact | Honest availability text with no decorative control-like contact symbol | No fake downloads, email links, send actions or form | Resume anchor reaches status; contact section distinguishes unavailable details from its working collection link. |
 
 Motion is limited to 160ms color/background/border feedback and native smooth anchor scrolling. No entrances or perpetual animation. `prefers-reduced-motion: reduce` disables transitions, animation and smooth scrolling. There are no motion-dependent interactions.
 
@@ -126,3 +126,48 @@ The layout uses wrapping labels, flexible grids, rem-based text, `minmax(0, …)
 The prototype stays at `/`; the future `/en` and `/vi` strategy is preserved and its route migration is deferred. Draft metadata is noindex/nofollow, not a privacy control. No deployment is authorized. Candidate preview visibility is expressly authorized for this local prototype and does not override the evidence/publication gates for a final portfolio.
 
 Actual validation results and pending browser checks are recorded in [PHASE_3_1_REVIEW.md](PHASE_3_1_REVIEW.md). Successful lint/build and source inspection alone do not establish responsive, keyboard or accessibility conformance.
+
+## Phase 3.2A — Projects library
+
+The owner authorized an English-only draft library at `/projects`. The homepage stays at `/`; the earlier bilingual URL strategy remains deferred. This approval permits candidate previews, not verified professional claims or public release.
+
+The library extends the existing palette: navy `#102D3C`, teal `#176B65`, slate `#52656E`, mist `#EDF4F2`, white `#FFFFFF`, and light teal `#A8D9CA`. Manrope remains the display face and Geist the body face, with the same font loading, spacing tokens, 1280px container and responsive gutters. There are no new visual tokens or font packages.
+
+The design uses a left-aligned title and short introduction, one wide navy featured candidate, two white supporting cards, and an open definition list explaining evidence labels. The featured card's navy surface establishes editorial priority; its explicit provisional label prevents that emphasis from implying stronger evidence. Identical dashboard tiles, search, filters, charts and fabricated artifact illustrations are unnecessary for three unverified topics.
+
+```text
+Shared navigation
+Projects library                 Introduction + evidence limits
+Featured case study candidate     Provisional priority
+[ C1: question and focus          Proposed scope + evidence status ]
+Further questions to explore
+[ C2: integration candidate ]     [ C3: workforce candidate ]
+Candidate / simulated / verified definitions
+Analysis approach link + shared footer
+```
+
+At or below 800px the introduction, featured-card contents, supporting cards and definitions become a single column. Font sizes and spacing are fluid; tags and status rows wrap without truncation. Cards are informational articles, not clickable surfaces. “Detailed case study in preparation” is plain text. Only genuine destinations receive link styling. Existing global focus and reduced-motion rules apply.
+
+New styles are isolated by `pc-` and `pl-` selector prefixes in colocated CSS files. The existing Turbopack `*.css` loader does not preserve CSS Module class exports in this configuration, so ordinary prefixed CSS uses the established pipeline without changing `next.config.ts` or homepage CSS. Browser rendering verified the resulting styles.
+
+Shared navigation now uses real route links for Projects and cross-page homepage anchors. Its row can wrap: browser testing reproduced an existing 320px overflow, and wrapping fixes it without changing homepage section layout. At 1440, 768 and 390px, measured homepage content geometry is unchanged; at 320px only the header reflow moves content down by 60px. See [PHASE_3_2A_REVIEW.md](PHASE_3_2A_REVIEW.md) for evidence, limitations and acceptance.
+
+## Phase 3.2B — Case study preparation pages
+
+The three existing candidates now have English-only detail routes at `/projects/[slug]`. The library's former preparation notice becomes a real, explicitly named “View preparation page” link. Cards retain their existing hierarchy, styling, and evidence labels. Project navigation identifies the library as the current location on detail pages. The homepage content and layout remain unchanged from the Phase 3.2A baseline.
+
+Detail pages reuse Manrope, Geist, the existing navy/teal/mist palette, container, gutters, border radii, focus treatment, and reduced-motion rules. A large candidate title leads into compact project metadata and a navy evidence notice. This notice separates the local preparation experience from verified project work and publication permission. No invented artifacts or decorative workflow diagrams are used.
+
+The reading experience has a 240px section-navigation column and a restrained prose column on desktop, stacking below 1000px. Metadata uses four, two, then one column; the evidence notice and related candidates stack below 600px. Nothing is pinned over the reading area. The 19 canonical sections retain their order; overview, requirements/system-interaction subsections, and separate validation/outcomes headings cover the requested conceptual topics. Missing content gets a short, specific explanation. Proposed discovery questions use a native disclosure. All section-link targets remain visible outside disclosures.
+
+Styles use the `cs-` prefix in colocated ordinary CSS, following the existing Turbopack pipeline. Native links, lists, definition lists, landmarks, and `details/summary` support navigation without custom client state. Section headings can receive fragment focus; no positive tabindex or custom keyboard handlers are introduced. Related links and Back to Projects have genuine destinations and visible hover/focus feedback.
+
+Browser checks found no horizontal overflow at 1440, 768, 390, or 320px, including expanded disclosures. Actual browser zoom at 200% also reflows successfully. Homepage content geometry matches the saved baseline at all four widths. See [PHASE_3_2B_REVIEW.md](PHASE_3_2B_REVIEW.md) for measured results and validation limits. These checks do not grant approval to publish candidate claims.
+
+## Phase 3.2B — Owner editorial corrections
+
+The owner accepted the visual direction and requested a more useful reading hierarchy. Each candidate now leads with five sections: Business Problem to Investigate, Key BA Questions, Proposed Analysis Approach, Evidence & Deliverables Required, and Verification & Publication Status. Six concrete questions and a proposed method sequence distinguish appointment workflows, omnichannel integration, and workforce scheduling. Every deliverable is explicitly proposed, with source evidence and personal contribution still unverified.
+
+The canonical 19 sections remain intact inside the native “Full BA Analysis Preparation Checklist” disclosure, collapsed by default. Its visible summary identifies the missing content and lack of verification. The primary section navigation targets the visible overview and checklist heading; the full 19-section index sits inside the disclosure. Existing fragment IDs are retained. Edge testing confirms a direct fragment into a checklist section reveals the disclosure without custom client code.
+
+This supersedes the earlier always-expanded deep-dive presentation, not the underlying template. The homepage, shared header/footer, library cards, typography, colors, responsive breakpoints, routes, and source candidate records are preserved. Scoped prose/list styles support the new overview. Root layout now declares `data-scroll-behavior="smooth"` to align with the existing CSS and Next.js route-scroll handling; this is separate from the unresolved affected-browser hydration report. See [PHASE_3_2B_OWNER_REVIEW.md](PHASE_3_2B_OWNER_REVIEW.md).

@@ -1,0 +1,87 @@
+.cs-detail { padding-block: 2rem 5rem; overflow-wrap: anywhere; }
+.cs-header { padding-block: 0 3rem; }
+.cs-back { display: inline-flex; align-items: center; min-height: 44px; padding-block: .65rem; text-decoration: underline; text-underline-offset: .3em; font-size: .9rem; font-weight: 600; }
+.cs-back:hover, .cs-related h3 a:hover { color: var(--accent-hover); }
+.cs-disclosure summary:hover, .cs-checklist > summary:hover { background: var(--surface-muted); }
+.cs-heading-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.cs-eyebrow { color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.cs-category { color: var(--text-muted); font-size: .9rem; margin-top: 1.5rem; }
+.cs-header h1 { max-width: 900px; margin-block: .5rem 1.25rem; font-size: clamp(2.25rem, 4.3vw, 4rem); line-height: 1.12; letter-spacing: -.04em; }
+.cs-lead { max-width: 760px; font-size: clamp(1.125rem, 1.6vw, 1.3rem); color: var(--text-muted); }
+.cs-metadata { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 2rem; }
+.cs-metadata dt, .cs-overview-facts dt { font-size: .8rem; color: var(--text-muted); font-weight: 600; }
+.cs-metadata dd { margin-top: .35rem; font-size: .9rem; }
+.cs-evidence { display: grid; grid-template-columns: 1fr 1.25fr; gap: 2rem; padding: clamp(1.25rem, 3vw, 2.5rem); background: var(--navy-950); color: var(--white); border-radius: 1rem; }
+.cs-evidence .cs-eyebrow { color: var(--teal-200); }
+.cs-evidence h2 { font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.3; margin-top: .75rem; }
+.cs-evidence-note { margin-top: 1rem; font-size: .875rem; color: var(--mist-200); }
+.cs-body { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); padding-top: 4rem; align-items: start; }
+.cs-navigation { font-size: .875rem; border-top: 2px solid var(--accent); padding-top: 1.25rem; }
+.cs-navigation > a { display: flex; align-items: center; min-height: 44px; padding-block: .6rem; border-bottom: 1px solid var(--border); }
+.cs-navigation a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .2em; }
+.cs-reading-column { min-width: 0; max-width: 800px; }
+.cs-overview h2, .cs-deep-dive h2, .cs-related h2 { margin-block: .6rem 1.25rem; }
+.cs-label { font-weight: 700; font-size: .8rem; color: var(--accent); margin-block: 1rem .5rem; }
+.cs-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; list-style: none; }
+.cs-tags li { font-size: .8rem; padding: .35rem .7rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); }
+.cs-overview-facts { display: grid; gap: 1rem; margin-top: 2rem; padding: 1.5rem; border-left: 3px solid var(--accent); background: var(--surface-muted); }
+.cs-overview-facts dd { margin-top: .3rem; font-size: .95rem; }
+.cs-analysis-section + .cs-analysis-section { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.cs-analysis-section h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+.cs-analysis-section h3 { font-size: 1.125rem; margin-block: 1.5rem .65rem; }
+.cs-questions, .cs-analysis-list { padding-left: 1.4rem; margin-top: 1rem; }
+.cs-questions { list-style: decimal; }
+.cs-analysis-list { list-style: disc; }
+.cs-questions li + li, .cs-analysis-list li + li { margin-top: .65rem; }
+.cs-questions li::marker { color: var(--accent); font-weight: 600; }
+.cs-approach { list-style: decimal; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 2rem; margin-top: 1rem; padding-left: 1.4rem; }
+.cs-approach li { padding-left: .25rem; }
+.cs-approach li::marker { color: var(--accent); font-weight: 600; }
+.cs-provenance { margin-top: 1rem; }
+.cs-definition-note { margin-top: 1.25rem; font-size: .9rem; }
+.cs-definition-note a { display: inline-block; min-height: 44px; padding-block: .6rem; text-decoration: underline; text-underline-offset: .2em; }
+.cs-definition-note a:hover, .cs-checklist-index a:hover { color: var(--accent-hover); }
+.cs-checklist { margin-top: 1.5rem; border: 1px solid var(--border); border-radius: .5rem; background: var(--surface); }
+.cs-checklist > summary { padding: 1.25rem; font-weight: 650; cursor: pointer; }
+.cs-checklist > summary .cs-note { display: block; margin-top: .5rem; font-weight: 400; }
+.cs-checklist-body { padding: 0 1.25rem 1.25rem; }
+.cs-checklist-index { margin-block: 1rem 2rem; }
+.cs-checklist-index ol { list-style: decimal; padding-left: 1.4rem; }
+.cs-checklist-index a { display: block; padding-block: .65rem; min-height: 44px; text-decoration: underline; text-underline-offset: .2em; }
+.cs-deep-dive { margin-top: 3.5rem; }
+.cs-intro, .cs-section > p, .cs-subsection > p { color: var(--text-muted); }
+.cs-section { padding-block: 2rem; border-bottom: 1px solid var(--border); }
+.cs-section-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; }
+.cs-number { font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 700; }
+.cs-state { font-size: .75rem; font-weight: 600; border: 1px solid var(--border); border-radius: 4px; padding: .15rem .5rem; background: var(--surface-muted); }
+.cs-section h3 { font-size: 1.4rem; line-height: 1.4; margin-bottom: .75rem; }
+.cs-subsection { margin-top: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--border); }
+.cs-subsection h4 { font-weight: 650; font-family: var(--font-display), sans-serif; }
+.cs-note { font-size: .8rem; color: var(--text-muted); }
+.cs-disclosure { margin-top: 1.25rem; border: 1px solid var(--border); border-radius: .5rem; background: var(--surface); }
+.cs-disclosure summary { padding: 1rem; cursor: pointer; font-weight: 600; font-size: .9rem; }
+.cs-disclosure-body { padding: 0 1rem 1.25rem; }
+.cs-disclosure-body ul { padding-left: 1.25rem; }
+.cs-disclosure-body li + li { margin-top: .75rem; }
+.cs-disclosure-body .cs-note { margin-top: 1rem; }
+.cs-related { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.cs-related > ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; list-style: none; margin-block: 1.5rem; }
+.cs-related li { padding: 1.5rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--surface); }
+.cs-related h3 { font-size: 1.25rem; line-height: 1.4; margin-block: .75rem .5rem; }
+.cs-related h3 a { display: block; min-height: 44px; padding-block: .4rem; text-decoration: underline; text-underline-offset: .2em; }
+.cs-related li > p { font-size: .875rem; color: var(--text-muted); }
+@media (max-width: 1000px) {
+  .cs-body { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 2.5rem; }
+  .cs-reading-column { max-width: none; }
+  .cs-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .cs-approach { grid-template-columns: 1fr; }
+  .cs-checklist > summary { padding: 1rem; }
+  .cs-checklist-body { padding: 0 1rem 1rem; }
+  .cs-evidence, .cs-related > ul { grid-template-columns: 1fr; }
+  .cs-evidence { gap: 1.25rem; }
+  .cs-metadata { grid-template-columns: 1fr; gap: 1rem; }
+  .cs-overview-facts { padding: 1rem; }
+  .cs-related li { padding: 1.25rem; }
+}

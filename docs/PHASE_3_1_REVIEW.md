@@ -1,5 +1,7 @@
 # Phase 3.1 — Homepage Prototype Review
 
+> **Controlled visual refinement update — 14 October 2026:** The approved navy/teal direction and headline remain in place. Source refinements, current verification results, and remaining owner inputs are recorded in the final “Controlled visual refinement update” section. Browser rendering and computed-style checks remain NOT TESTED.
+
 Prepared 13 October 2026; QA audit updated 13 October 2026. **Final acceptance recommendation: HOLD pending browser validation and owner review.** Source, fresh build output and localhost HTTP checks passed within their stated scope. The 1440px, 768px, 390px and 320px rendered views, keyboard interaction, screen-reader behavior, reduced-motion emulation and 200% browser zoom are **NOT TESTED** because no browser automation surface is connected. See the current QA audit below; implementation-stage records are retained for history. No deployment, publication, final case pages, translations, or Phase 3.2 work.
 
 ## Visual direction
@@ -248,3 +250,104 @@ For each manual case, record PASS/FAIL, exact fixture, observed behavior, screen
 No application source was changed during this QA task: no confirmed critical defect justified a fix. The report now separates verified markup/calculations from unexecuted browser behavior, records weak visual patterns without redesigning, and provides explicit manual acceptance steps. Existing visual direction, project truthfulness, disabled Vietnamese state and phase boundaries are preserved.
 
 **Recommendation: HOLD final Phase 3.1 approval.** Engineering/source checks passed; rendered visual, responsive and interaction acceptance is incomplete. Complete M-01–M-08, resolve any confirmed critical failures within the same phase, record actual viewport evidence, then obtain owner approval. Noncritical polish remains an owner decision. Missing identity/CV/contact/project evidence still limits product readiness and does not authorize invented content, new pages, translations, deployment, publication or Phase 3.2.
+
+## Controlled visual refinement update — 14 October 2026
+
+### Findings and rationale
+
+Source review found several supporting descriptions at 13–14px and status/metadata copy at 10–12px. The phase request called for more comfortable reading without enlarging every element. Explanatory copy is now generally 15–16px, project and process descriptions are 16px, and metadata/status text is generally 12–14px. These are declared CSS values at the default 16px root size; actual browser-computed sizes, font loading and line wrapping are **NOT TESTED** because no browser is connected.
+
+The original headline and Manrope/Geist pairing remain. The About profile now groups explicit placeholders for name, target BA role, Healthcare IT specialization, professional summary, and resume availability. It states that owner input or verification is required; no identity, experience, credential, or metric was added.
+
+Appointment Management remains first and is identified as the **provisional** primary case study. It retains its Draft / Unverified badge. Its native disclosure names four potential future evidence areas—process diagram, business rules, acceptance criteria, and decision trade-offs—and says no artifacts exist in this preview. All three previews retain their Draft / Unverified labels and evidence caveats.
+
+The contact section still exposes no email, phone, form, download, or fake contact channel. Its decorative arrow was removed because the circle could resemble an action. The remaining collection link has a real homepage destination. Resume still points to the availability statement.
+
+### Files changed for this update
+
+- `src/app/globals.css` — raised supporting-copy and metadata sizes, refined case grid/lead styling, differentiated competency marks, increased mobile analysis copy, and preserved focus/reduced-motion rules.
+- `src/components/case-studies/project-preview.tsx` — provisional C1 treatment and clearly labeled future evidence areas within the native disclosure.
+- `src/components/sections/about-preview.tsx` — labeled owner-input profile fields and resume availability.
+- `src/components/sections/competencies.tsx` — unique decorative mark variants; marks remain hidden from assistive technology.
+- `src/components/sections/contact.tsx` — removed the arrow that could imply a contact action.
+- `docs/DESIGN_SYSTEM.md` — recorded the refined type guidance, two-column project grid, provisional lead treatment, and contact behavior.
+- `docs/PHASE_3_1_REVIEW.md` — this update and current result record.
+
+No dependency, lockfile, route, translation, case evidence, contact channel, or deployment was added. `package.json` and `package-lock.json` were already modified in the working tree before this refinement and were preserved without edits.
+
+### Responsive and accessibility review
+
+Source CSS retains the visible wrapping header row at widths at or below 800px, single-column project cards at those widths, flexible content tracks, 44px text-link targets, 48px primary actions, 56px disclosure summaries, rem-based text, visible focus rules, and reduced-motion overrides. Project cards now use two columns above 800px, with a distinguished C1 treatment. The 320px, 390px, 768px, and 1440px rendered layouts, overflow, nav wrapping, touch geometry, expanded-card reflow, keyboard operation, screen-reader announcements, 200% zoom, and reduced-motion behavior are **NOT TESTED**.
+
+Source checks retain one h1, existing section IDs and native anchor links, semantic list/disclosure structure, visible Draft / Unverified text, and no fake action controls. Contrast ratios previously calculated for the shared CSS color-token pairs remain applicable to unchanged foreground/background tokens; the project lead uses the existing white and teal/slate palette. Rendered text contrast, focus boundaries, and actual font rendering are **NOT TESTED**. No conformance claim is made.
+
+### Quality checks
+
+| Check | Current result |
+| --- | --- |
+| `npm run lint` | **BLOCKED — exit 1.** ESLint cannot resolve `eslint-config-next/core-web-vitals` imported by the existing `eslint.config.mjs`; Node suggests the `.js` export. No config or dependency changes were made. |
+| `npm run build` | **BLOCKED — exit 1.** Next.js 16.4.0/Turbopack could not fetch Geist and Manrope from Google Fonts due unavailable outbound network access. This matches the documented font-fetch limitation; no font or dependency workaround was introduced. |
+| `git diff --check` | **PASS — exit 0.** |
+| Route and CTA destinations | Source inspection: current homepage anchors remain `#home`, `#about`, `#projects`, `#contact`, `#resume`, and `#approach`; Resume reaches its availability record, contact's collection link reaches Projects, and neither points to an unavailable route. Browser activation and scroll landing are **NOT TESTED**. |
+| Browser and computed-style review | **NOT TESTED.** No browser surface is connected. No screenshots or viewport/computed-size claims are recorded. |
+
+### Remaining owner inputs
+
+- Approved display name and preferred target Business Analyst role title.
+- Verified Healthcare IT specialization and professional summary/background.
+- Approved public resume and permission to publish it.
+- Owner-approved contact channel and publication permission.
+- For each candidate case: real/simulated provenance, personal contribution, permitted evidence, artifact status, and validation/outcome limits.
+- Browser QA at 1440px, 768px, 390px, and 320px, including keyboard, disclosures, zoom, reduced motion, and screen-reader checks.
+- A resolvable lint configuration/dependency state and network access or approved local font assets for successful build verification.
+
+### Phase 3.1 status
+
+The controlled source refinement is complete. Final Phase 3.1 acceptance remains **HOLD** because browser validation was unavailable and lint/build did not complete successfully in this environment. Resolve the environment blockers and perform the listed browser checks, then obtain owner review. Stop here; no Phase 3.2 work, new pages, translation, publication, or deployment is included.
+
+## Build and lint recovery — 14 October 2026
+
+This update supersedes the lint/build blockers above. It covers technical recovery only; the outstanding browser and owner-review gates remain.
+
+### Project safety and location
+
+- Both the working directory and Git top level resolve to `C:\BA\Portfolio\ba-healthcare-portfolio`.
+- The earlier preview record references `C:\projects\ba-healthcare-portfolio`; that directory no longer exists. This supports a relocation history, but does not prove whether the project was moved or copied. `node_modules` is a regular directory at the current root, not a link to the old location. No old-root or local-file dependency references were found in the inspected package/configuration files.
+- Nine files were already modified: this review, `docs/DESIGN_SYSTEM.md`, both dependency files, `src/app/globals.css`, and the project-preview, about-preview, competencies, and contact components. Their existing edits were preserved except for the diagnosed ESLint dependency correction described below.
+- The starting dependency files and complete working-tree diff were backed up to the local temporary directory `ba-build-recovery-f8d004276d4c4c1d915feabadc237609`. Tracked-file hashes were captured before recovery to check preservation.
+
+### Root causes and targeted repair
+
+**ESLint:** the manifest, lockfile and installed package consistently specified `eslint-config-next` 14.2.35. This was not a missing install or stale lockfile. That release exposes legacy CommonJS configuration objects, has no subpath export map for the extensionless ESM imports, and declares ESLint 7/8 peer support. The project uses ESLint 9.39.5 and Next.js 16.4.0 with flat-config arrays. Consequently, the existing import failed with `ERR_MODULE_NOT_FOUND`; merely adding `.js` would leave the configuration-format and peer-version mismatch unresolved.
+
+Installed exact `eslint-config-next@16.4.0` using npm against the existing lockfile. Its `core-web-vitals` and `typescript` ESM imports now resolve and both export flat-config arrays. The existing `eslint.config.mjs`, rule sets, skill-tooling exclusion, scripts, and TypeScript checks remain unchanged. Node 24.21.0 satisfies the inspected engine requirements; React/React DOM 19.3.0 match the existing Next.js peer range.
+
+Only one direct dependency changed: `eslint-config-next`, from `^14.2.35` to `16.4.0`. npm reported 51 packages added, 30 removed and 3 changed in the associated lint dependency graph. Those three existing package paths were `eslint-config-next`, `@next/eslint-plugin-next` (both 14.2.35 → 16.4.0), and the transitive `lru-cache` (10.4.3 → 5.1.1, now required by Babel's compilation-target helper through React Hooks linting). Existing `@typescript-eslint/*` 8.71.2 entries were retained. No application dependency changed. `package.json` now matches its committed version because its only prior edit was the incompatible ESLint config version; this was a targeted npm update, not a Git restore or lockfile replacement.
+
+**Fonts:** the initial sandboxed build exited 1 after connection failures fetching both Geist and Manrope stylesheets from `fonts.googleapis.com`. The unchanged build then exited 0 when run with approved network access outside the sandbox. A second build after dependency recovery also exited 0. This isolates the observed font failure to the restricted build environment, rather than invalid font options or missing local assets. The current Google font configuration does not reference local font files.
+
+Manrope and Geist, their variable weights/subsets, CSS variables, and all layout/CSS remain unchanged. `next/font/local` was evaluated as the documented offline alternative, but successful network-enabled builds do not justify adding font binaries or changing font configuration for this recovery. A future offline-build requirement would need verified font assets, their redistribution licenses and notices, and typography validation. Clean builds with the current configuration still require access to Google Fonts; no offline-build claim is made.
+
+The diagnosis followed the installed Next.js 16.4.0 guides under `node_modules/next/dist/docs/` (ESLint, font optimization, font API, and version-16 upgrade) and the official [ESLint documentation](https://nextjs.org/docs/app/api-reference/config/eslint) and [font documentation](https://nextjs.org/docs/app/api-reference/components/font).
+
+### Verification results
+
+| Command / check | Actual result |
+| --- | --- |
+| Initial `npm run lint` | **FAIL — exit 1.** `ERR_MODULE_NOT_FOUND` for `eslint-config-next/core-web-vitals`. |
+| Initial sandboxed `npm run build` | **FAIL — exit 1.** Two font-request warnings and two fetch errors (Geist and Manrope). |
+| Unchanged `npm run build`, approved network access | **PASS — exit 0.** Compilation, TypeScript and static generation completed; no warnings reported. |
+| Targeted npm install, sandbox | **FAIL — exit 1.** `EACCES` fetching the npm registry; npm also could not write its external cache log. |
+| Same targeted npm install, approved access | **PASS — exit 0.** No install warnings reported; no force/audit repair used. |
+| Recovered `npm run lint`, sandbox | **PASS — exit 0.** No errors or warnings reported. Configuration loading was slow but completed successfully. |
+| Recovered `npm run lint`, approved access | **PASS — exit 0.** Confirmatory run during delay diagnosis; no errors or warnings reported. |
+| Recovered `npm run build`, approved network access | **PASS — exit 0.** Compilation, TypeScript and static generation completed; no warnings reported. Routes remain `/` and the framework `/_not-found`. |
+| `npm ls --depth=0` and lint dependency inspection | **PASS — exit 0.** Next.js/config 16.4.0 and ESLint 9.39.5; direct dependency tree is valid. |
+| `git diff --check` | **PASS — exit 0.** Git prints its existing LF-to-CRLF normalization warning for this review; no whitespace errors. |
+| Preservation and lockfile checks | Only the two dependency files and this report changed relative to the captured tracked-file hashes. Manifest/lockfile root dependency declarations match. |
+
+### Scope and acceptance recommendation
+
+Recovery modifies only `package.json`, `package-lock.json`, and this appended review. Homepage layout, visual design, case-study content, font configuration, `next.config.ts`, ESLint configuration and installed Agent Skills are preserved. Generated build output and installed packages are local verification artifacts.
+
+**Recommend accepting the Phase 3.1 build/lint recovery objective.** There is no remaining lint/build blocker when the build has the verified network access. Restricted/offline builds still need font access or a separately implemented local-font solution. Overall Phase 3.1 visual/accessibility acceptance remains **HOLD** pending the previously documented browser checks and owner review. No Phase 3.2 work or deployment was performed.

@@ -12,9 +12,9 @@ export function Competencies() {
           description="Four themes for organizing future evidence. These describe the portfolio’s focus, not verified personal proficiency."
         />
         <div className="competency-grid">
-          {competencyThemes.map((theme) => (
+          {competencyThemes.map((theme, index) => (
             <article key={theme.title} className="competency-item">
-              <span className="competency-symbol" aria-hidden="true" />
+              <span className={`competency-symbol competency-symbol--${index + 1}`} aria-hidden="true" />
               <h3>{theme.title}</h3>
               <p>{theme.description}</p>
               <p className="method-label">{theme.methods}</p>

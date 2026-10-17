@@ -8,7 +8,6 @@ export function Contact() {
           <p>For conversations about healthcare workflows,<br className="desktop-break" /> business analysis, and thoughtful system change.</p>
         </div>
         <div className="contact-status">
-          <span className="contact-symbol" aria-hidden="true">↗</span>
           <h3>Contact details coming soon</h3>
           <p>A professional contact channel will be added after owner approval.</p>
           <a className="contact-link" href="#projects">Explore the draft collection</a>
