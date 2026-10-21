@@ -12,9 +12,9 @@ export function SiteHeader({ currentPage = "home" }: { currentPage?: "home" | "p
           <span>Healthcare BA<span className="brand-caption">An evidence-led portfolio</span></span>
         </Link>
         <nav aria-label="Main navigation" className="main-nav flex-wrap">
-          <Link href={`${homePrefix}#home`}>Home</Link>
+          <Link href={`${homePrefix}#home`} aria-current={currentPage === "home" ? "page" : undefined}>Home</Link>
           <Link href={`${homePrefix}#about`}>About</Link>
-          <Link href="/projects" aria-current={currentPage === "projects" ? "page" : currentPage === "project" ? "location" : undefined} className={currentPage !== "home" ? "text-accent underline underline-offset-8" : undefined}>Projects</Link>
+          <Link href="/projects" aria-current={currentPage === "projects" ? "page" : currentPage === "project" ? "location" : undefined}>Projects</Link>
           <Link href={`${homePrefix}#contact`}>Contact</Link>
         </nav>
         <div className="header-utilities">

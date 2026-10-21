@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ProjectStatus } from "@/components/case-studies/project-status";
+import { AnalyticalArtwork } from "@/components/ui/analytical-artwork";
 import type { ProjectRecord } from "@/types/project";
 import "./project-card.css";
 
@@ -9,10 +10,9 @@ const permissionLabels = { unknown: "Unknown · Not cleared" } satisfies Record<
 
 type ProjectCardProps = {
   project: ProjectRecord;
-  variant?: "featured" | "standard";
 };
 
-export function ProjectCard({ project, variant = "standard" }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   const content = project.content.en;
   const professional = project.contentKind === "professional-draft";
 
@@ -20,8 +20,10 @@ export function ProjectCard({ project, variant = "standard" }: ProjectCardProps)
     <article
       id={project.slug}
       aria-labelledby={`${project.id}-title`}
-      className={`pc-card ${variant === "featured" ? "pc-featured" : ""}`}
+      className="pc-card"
     >
+      <AnalyticalArtwork kind={project.id} />
+      <div className="pc-editorial-copy">
       <div className="pc-top">
         <span className="pc-reference">{project.id} <span>{professional ? "Professional project draft" : "Candidate topic"}</span></span>
         <ProjectStatus status={project.verificationStatus} />
@@ -47,6 +49,7 @@ export function ProjectCard({ project, variant = "standard" }: ProjectCardProps)
         </div>
       </div>
       <p className="pc-preparation"><Link href={`/projects/${project.slug}`} className="pc-detail-link">{professional ? "View project draft" : "View preparation page"}<span className="sr-only">: {content.title}</span><span aria-hidden="true"> →</span></Link></p>
+      </div>
     </article>
   );
 }

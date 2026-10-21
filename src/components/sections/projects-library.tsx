@@ -4,8 +4,6 @@ import type { ProjectRecord } from "@/types/project";
 import "./projects-library.css";
 
 export function ProjectsLibrary({ projects }: { projects: readonly ProjectRecord[] }) {
-  const [featured, ...remaining] = projects;
-
   return (
     <div className="pl-library">
       <section className="pl-hero" aria-labelledby="library-title">
@@ -13,41 +11,24 @@ export function ProjectsLibrary({ projects }: { projects: readonly ProjectRecord
           <Link href="/" className="text-link pl-home-link">Back to homepage</Link>
           <div className="pl-introduction">
             <div>
-              <h1 id="library-title">Projects library</h1>
-              <p className="pl-lead">Projects and analysis.<br />Explore the work and its evidence.</p>
+              <p className="section-label">Projects library</p>
+              <h1 id="library-title">Questions<span>worth exploring.</span></h1>
             </div>
             <div className="pl-context">
               <p>Explore an owner-attested professional draft alongside candidate topics in healthcare workflows and workforce operations. Each identifies its contribution and evidence status.</p>
               <p className="pl-caveat">Owner testimony and proposed analysis are distinct from independently verified artifacts or outcomes. Publication permission remains unknown.</p>
-              {featured ? <a className="pl-jump-link" href="#featured-candidate">Explore the collection</a> : null}
             </div>
           </div>
+          <nav className="pl-project-index" aria-label="Project index">{projects.map(project => <a key={project.id} href={`#${project.slug}`}><span>{project.id}</span>{project.content.en.title}</a>)}</nav>
         </div>
       </section>
 
       <div className="page-container pl-collection">
-        {featured ? (
-          <section id="featured-candidate" aria-labelledby="featured-candidate-title">
-            <div className="pl-section-heading">
-              <h2 id="featured-candidate-title">Featured case study candidate</h2>
-              <p>Provisional lead · Evidence review pending</p>
-            </div>
-            <ProjectCard project={featured} variant="featured" />
-            <p className="pl-feature-note">The lead position reflects a provisional editorial priority, not proven project impact. Final selection depends on relevant evidence and permission review.</p>
-          </section>
-        ) : <p>No candidate topics are available yet.</p>}
-
-        {remaining.length > 0 ? (
-          <section className="pl-remaining" aria-labelledby="remaining-title">
-            <div className="pl-section-heading">
-              <h2 id="remaining-title">More projects and analysis</h2>
-              <p>Professional drafts and candidate topics</p>
-            </div>
-            <div className="pl-grid">
-              {remaining.map((project) => <ProjectCard key={project.id} project={project} />)}
-            </div>
-          </section>
-        ) : null}
+        <section id="featured-candidate" aria-labelledby="collection-title">
+          <h2 id="collection-title" className="sr-only">Project drafts and candidate topics</h2>
+          <div className="pl-spreads">{projects.map(project => <ProjectCard key={project.id} project={project} />)}</div>
+          <p className="pl-feature-note">The order reflects a provisional editorial priority, not proven project impact. Final selection depends on relevant evidence and permission review.</p>
+        </section>
 
         <section className="pl-status-guide" aria-labelledby="status-guide-title">
           <div className="pl-guide-introduction">

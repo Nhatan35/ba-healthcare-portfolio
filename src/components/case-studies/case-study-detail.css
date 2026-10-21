@@ -1,87 +1,187 @@
-.cs-detail { padding-block: 2rem 5rem; overflow-wrap: anywhere; }
-.cs-header { padding-block: 0 3rem; }
-.cs-back { display: inline-flex; align-items: center; min-height: 44px; padding-block: .65rem; text-decoration: underline; text-underline-offset: .3em; font-size: .9rem; font-weight: 600; }
+.cs-detail { padding-block: var(--space-6) var(--section-space); overflow-wrap: anywhere; }
+.cs-header { padding-bottom: var(--space-12); }
+.cs-back { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding-block: .65rem; color: var(--accent); text-decoration: underline; text-underline-offset: .3em; font-size: .875rem; font-weight: 550; }
 .cs-back:hover, .cs-related h3 a:hover { color: var(--accent-hover); }
-.cs-disclosure summary:hover, .cs-checklist > summary:hover { background: var(--surface-muted); }
-.cs-heading-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
-.cs-eyebrow { color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.cs-category { color: var(--text-muted); font-size: .9rem; margin-top: 1.5rem; }
-.cs-header h1 { max-width: 900px; margin-block: .5rem 1.25rem; font-size: clamp(2.25rem, 4.3vw, 4rem); line-height: 1.12; letter-spacing: -.04em; }
-.cs-lead { max-width: 760px; font-size: clamp(1.125rem, 1.6vw, 1.3rem); color: var(--text-muted); }
-.cs-metadata { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 2rem; }
-.cs-metadata dt, .cs-overview-facts dt { font-size: .8rem; color: var(--text-muted); font-weight: 600; }
-.cs-metadata dd { margin-top: .35rem; font-size: .9rem; }
-.cs-evidence { display: grid; grid-template-columns: 1fr 1.25fr; gap: 2rem; padding: clamp(1.25rem, 3vw, 2.5rem); background: var(--navy-950); color: var(--white); border-radius: 1rem; }
-.cs-evidence .cs-eyebrow { color: var(--teal-200); }
-.cs-evidence h2 { font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.3; margin-top: .75rem; }
-.cs-evidence-note { margin-top: 1rem; font-size: .875rem; color: var(--mist-200); }
-.cs-body { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); padding-top: 4rem; align-items: start; }
-.cs-navigation { font-size: .875rem; border-top: 2px solid var(--accent); padding-top: 1.25rem; }
-.cs-navigation > a { display: flex; align-items: center; min-height: 44px; padding-block: .6rem; border-bottom: 1px solid var(--border); }
-.cs-navigation a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .2em; }
-.cs-reading-column { min-width: 0; max-width: 800px; }
-.cs-overview h2, .cs-deep-dive h2, .cs-related h2 { margin-block: .6rem 1.25rem; }
-.cs-label { font-weight: 700; font-size: .8rem; color: var(--accent); margin-block: 1rem .5rem; }
-.cs-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; list-style: none; }
-.cs-tags li { font-size: .8rem; padding: .35rem .7rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); }
-.cs-overview-facts { display: grid; gap: 1rem; margin-top: 2rem; padding: 1.5rem; border-left: 3px solid var(--accent); background: var(--surface-muted); }
-.cs-overview-facts dd { margin-top: .3rem; font-size: .95rem; }
-.cs-analysis-section + .cs-analysis-section { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
-.cs-analysis-section h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+.cs-header-layout { display: grid; grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: end; margin-top: var(--space-8); }
+.cs-header-story { min-width: 0; }
+.cs-heading-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.cs-eyebrow { color: var(--accent); font-size: .875rem; font-weight: 600; }
+.cs-category { color: var(--text-muted); font-size: .875rem; margin-top: var(--space-6); }
+.cs-header h1 { max-width: 24ch; margin-block: .75rem 1.5rem; font-size: clamp(2.25rem, 4vw, 3.75rem); font-weight: 550; line-height: 1.12; letter-spacing: -.045em; }
+.cs-lead { max-width: 62ch; font-size: clamp(1.0625rem, 1.5vw, 1.1875rem); color: var(--text-muted); }
+.cs-metadata { display: grid; padding: var(--space-6); border: 1px solid var(--border); border-radius: var(--radius-medium); background: var(--surface); }
+.cs-metadata > div { padding-block: var(--space-4); border-top: 1px solid var(--border); }
+.cs-metadata > div:first-child { border: 0; padding-top: 0; }
+.cs-metadata > div:last-child { padding-bottom: 0; }
+.cs-metadata dt, .cs-overview-facts dt { font-size: .875rem; color: var(--text-muted); font-weight: 500; }
+.cs-metadata dd { margin-top: .5rem; font-size: .9375rem; font-weight: 500; }
+.cs-detail--professional .cs-metadata { border-top: 3px solid var(--accent); }
+.cs-evidence { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: var(--space-8); padding: clamp(1.25rem, 2.5vw, 2rem); background: var(--surface-muted); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius-small); }
+.cs-evidence h2 { font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.35; margin-top: .5rem; letter-spacing: -.025em; }
+.cs-evidence > div > p:not(.cs-eyebrow) { font-size: .9375rem; color: var(--text-muted); }
+.cs-evidence .cs-evidence-note { margin-top: .75rem; font-size: .8125rem; }
+.cs-body { display: grid; grid-template-columns: 224px minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); padding-top: var(--space-12); align-items: start; }
+.cs-navigation { font-size: .9375rem; border-top: 2px solid var(--accent); padding-top: var(--space-4); }
+.cs-navigation .cs-eyebrow { margin-bottom: var(--space-3); }
+.cs-navigation > a { display: flex; align-items: center; min-height: 48px; padding: .75rem .5rem; border-bottom: 1px solid var(--border); line-height: 1.5; border-radius: 4px; }
+.cs-navigation a:hover { color: var(--accent); background: var(--surface-muted); text-decoration: underline; text-underline-offset: .2em; }
+.cs-reading-column { min-width: 0; }
+.cs-overview { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-medium); padding: clamp(1.5rem, 3.5vw, 3rem); box-shadow: var(--shadow-soft); }
+.cs-overview h2, .cs-deep-dive h2, .cs-related h2 { margin-block: .5rem 1.25rem; }
+.cs-analysis-section > p { max-width: 68ch; }
+.cs-analysis-section > p + p { margin-top: .75rem; }
+.cs-label { font-weight: 600; font-size: .875rem; color: var(--accent); margin-block: 1rem .5rem; }
+.cs-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; list-style: none; }
+.cs-tags li { font-size: .875rem; padding: .35rem .625rem; border-radius: 5px; color: var(--accent); background: var(--surface-muted); }
+.cs-overview-facts { display: grid; margin-top: var(--space-6); }
+.cs-overview-facts > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); gap: 1.25rem; padding-block: 1rem; border-bottom: 1px solid var(--border); }
+.cs-overview-facts dd { font-size: .9375rem; }
+.cs-analysis-section + .cs-analysis-section { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+.cs-analysis-section h2 { font-size: clamp(1.5rem, 2.3vw, 1.875rem); line-height: 1.3; }
 .cs-analysis-section h3 { font-size: 1.125rem; margin-block: 1.5rem .65rem; }
+.cs-overview--professional .cs-analysis-section:nth-child(2) { background: var(--surface-muted); border: 0; border-left: 3px solid var(--accent); border-radius: var(--radius-small); padding: var(--space-6); }
 .cs-questions, .cs-analysis-list { padding-left: 1.4rem; margin-top: 1rem; }
 .cs-questions { list-style: decimal; }
 .cs-analysis-list { list-style: disc; }
-.cs-questions li + li, .cs-analysis-list li + li { margin-top: .65rem; }
+.cs-questions li + li, .cs-analysis-list li + li { margin-top: .875rem; }
 .cs-questions li::marker { color: var(--accent); font-weight: 600; }
-.cs-approach { list-style: decimal; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 2rem; margin-top: 1rem; padding-left: 1.4rem; }
+.cs-approach { list-style: decimal; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; margin-top: 1.5rem; padding-left: 1.4rem; }
 .cs-approach li { padding-left: .25rem; }
 .cs-approach li::marker { color: var(--accent); font-weight: 600; }
 .cs-provenance { margin-top: 1rem; }
-.cs-definition-note { margin-top: 1.25rem; font-size: .9rem; }
-.cs-definition-note a { display: inline-block; min-height: 44px; padding-block: .6rem; text-decoration: underline; text-underline-offset: .2em; }
+.cs-definition-note { margin-top: 1.25rem; font-size: .875rem; color: var(--text-muted); }
+.cs-definition-note a { display: inline-block; min-height: 44px; padding-block: .6rem; color: var(--accent); text-decoration: underline; text-underline-offset: .2em; }
 .cs-definition-note a:hover, .cs-checklist-index a:hover { color: var(--accent-hover); }
-.cs-checklist { margin-top: 1.5rem; border: 1px solid var(--border); border-radius: .5rem; background: var(--surface); }
-.cs-checklist > summary { padding: 1.25rem; font-weight: 650; cursor: pointer; }
+.cs-checklist { margin-top: 1.5rem; border: 1px solid var(--border); border-radius: var(--radius-small); background: var(--surface); }
+.cs-checklist > summary { padding: 1.25rem; font-weight: 600; font-size: .9375rem; cursor: pointer; border-radius: var(--radius-small); }
 .cs-checklist > summary .cs-note { display: block; margin-top: .5rem; font-weight: 400; }
-.cs-checklist-body { padding: 0 1.25rem 1.25rem; }
-.cs-checklist-index { margin-block: 1rem 2rem; }
-.cs-checklist-index ol { list-style: decimal; padding-left: 1.4rem; }
-.cs-checklist-index a { display: block; padding-block: .65rem; min-height: 44px; text-decoration: underline; text-underline-offset: .2em; }
-.cs-deep-dive { margin-top: 3.5rem; }
+.cs-checklist-body { padding: 0 1.5rem 1.5rem; }
+.cs-checklist-index { margin-block: 1rem 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.cs-checklist-index ol { list-style: decimal; padding-left: 1.4rem; columns: 2; column-gap: 2.5rem; }
+.cs-checklist-index li { break-inside: avoid; }
+.cs-checklist-index li::marker { color: var(--text-muted); font-size: .8125rem; }
+.cs-checklist-index a { display: block; padding-block: .75rem; min-height: 44px; font-size: .875rem; text-decoration: underline; text-underline-offset: .2em; }
+.cs-deep-dive { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+.cs-deep-dive h2 { font-size: clamp(1.5rem, 2vw, 1.75rem); }
+.cs-deep-dive > .cs-intro { font-size: .9375rem; max-width: 70ch; }
 .cs-intro, .cs-section > p, .cs-subsection > p { color: var(--text-muted); }
 .cs-section { padding-block: 2rem; border-bottom: 1px solid var(--border); }
+.cs-section:last-child { border-bottom: 0; }
 .cs-section-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; }
-.cs-number { font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 700; }
-.cs-state { font-size: .75rem; font-weight: 600; border: 1px solid var(--border); border-radius: 4px; padding: .15rem .5rem; background: var(--surface-muted); }
-.cs-section h3 { font-size: 1.4rem; line-height: 1.4; margin-bottom: .75rem; }
+.cs-number { font-size: .8125rem; font-variant-numeric: tabular-nums; color: var(--text-muted); font-weight: 550; }
+.cs-state { font-size: .875rem; font-weight: 500; border: 1px solid var(--border); border-radius: 4px; padding: .15rem .5rem; color: var(--text-muted); background: var(--surface-muted); }
+.cs-section h3 { font-size: 1.25rem; line-height: 1.4; margin-bottom: .75rem; }
+.cs-section > p { font-size: .9375rem; }
 .cs-subsection { margin-top: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--border); }
-.cs-subsection h4 { font-weight: 650; font-family: var(--font-display), sans-serif; }
-.cs-note { font-size: .8rem; color: var(--text-muted); }
-.cs-disclosure { margin-top: 1.25rem; border: 1px solid var(--border); border-radius: .5rem; background: var(--surface); }
-.cs-disclosure summary { padding: 1rem; cursor: pointer; font-weight: 600; font-size: .9rem; }
-.cs-disclosure-body { padding: 0 1rem 1.25rem; }
-.cs-disclosure-body ul { padding-left: 1.25rem; }
+.cs-subsection h4 { font-weight: 600; font-family: var(--font-display), sans-serif; }
+.cs-note { font-size: .875rem; color: var(--text-muted); }
+.cs-disclosure { margin-top: 1.25rem; border: 1px solid var(--border); border-radius: var(--radius-small); background: var(--surface); }
+.cs-disclosure summary { padding: 1rem; min-height: 48px; cursor: pointer; font-weight: 550; font-size: .875rem; border-radius: var(--radius-small); }
+.cs-disclosure summary:hover, .cs-checklist > summary:hover { background: var(--surface-muted); }
+.cs-disclosure[open] > summary, .cs-checklist[open] > summary { background: var(--surface-muted); border-bottom: 1px solid var(--border); border-radius: var(--radius-small) var(--radius-small) 0 0; margin-bottom: 1rem; }
+.cs-disclosure summary::marker, .cs-checklist > summary::marker { color: var(--accent); }
+.cs-disclosure-body { padding: 0 1.25rem 1.25rem; }
+.cs-disclosure-body ul { padding-left: 1.25rem; list-style: disc; }
 .cs-disclosure-body li + li { margin-top: .75rem; }
 .cs-disclosure-body .cs-note { margin-top: 1rem; }
-.cs-related { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
-.cs-related > ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; list-style: none; margin-block: 1.5rem; }
-.cs-related li { padding: 1.5rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--surface); }
-.cs-related h3 { font-size: 1.25rem; line-height: 1.4; margin-block: .75rem .5rem; }
+.cs-related { margin-top: var(--section-space); padding-top: var(--space-12); border-top: 1px solid var(--border); }
+.cs-related > ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); list-style: none; margin-block: var(--space-8) var(--space-6); }
+.cs-related li { min-width: 0; padding: var(--card-padding); border: 1px solid var(--border); border-radius: var(--radius-medium); background: var(--surface); transition: border-color var(--duration-feedback), box-shadow var(--duration-feedback); }
+.cs-related li:focus-within { border-color: var(--accent); box-shadow: var(--shadow-soft); }
+.cs-related h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.4; margin-block: 1rem .5rem; }
 .cs-related h3 a { display: block; min-height: 44px; padding-block: .4rem; text-decoration: underline; text-underline-offset: .2em; }
-.cs-related li > p { font-size: .875rem; color: var(--text-muted); }
+.cs-related li > p { font-size: .8125rem; color: var(--text-muted); margin-top: .5rem; }
+@media (hover: hover) { .cs-related li:hover { border-color: var(--accent); box-shadow: var(--shadow-soft); } }
+@media (min-width: 1001px) and (min-height: 800px) { .cs-navigation { position: sticky; top: 2rem; } }
+@media (max-width: 1100px) {
+  .cs-header-layout { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--space-8); }
+  .cs-body { grid-template-columns: 190px minmax(0, 1fr); gap: var(--space-8); }
+}
 @media (max-width: 1000px) {
-  .cs-body { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 2.5rem; }
-  .cs-reading-column { max-width: none; }
-  .cs-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cs-header-layout { grid-template-columns: 1fr; }
+  .cs-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .cs-metadata > div { padding: 0; border: 0; }
+  .cs-body { grid-template-columns: 1fr; gap: var(--space-8); }
+  .cs-navigation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-6); }
+  .cs-navigation > p { grid-column: 1 / -1; }
 }
 @media (max-width: 600px) {
-  .cs-approach { grid-template-columns: 1fr; }
+  .cs-header { padding-bottom: var(--space-8); }
+  .cs-header-layout { margin-top: var(--space-6); }
+  .cs-header h1 { font-size: clamp(2rem, 8.5vw, 3rem); }
+  .cs-approach, .cs-evidence, .cs-related > ul { grid-template-columns: 1fr; }
+  .cs-evidence { gap: var(--space-4); }
+  .cs-metadata { padding: var(--space-6); grid-template-columns: 1fr; gap: var(--space-4); }
+  .cs-metadata > div + div { padding-top: 1rem; border-top: 1px solid var(--border); }
+  .cs-overview { padding: var(--space-6); }
+  .cs-overview-facts > div { grid-template-columns: 1fr; gap: .375rem; }
+  .cs-overview--professional .cs-analysis-section:nth-child(2) { padding: var(--space-4); }
   .cs-checklist > summary { padding: 1rem; }
   .cs-checklist-body { padding: 0 1rem 1rem; }
-  .cs-evidence, .cs-related > ul { grid-template-columns: 1fr; }
-  .cs-evidence { gap: 1.25rem; }
-  .cs-metadata { grid-template-columns: 1fr; gap: 1rem; }
-  .cs-overview-facts { padding: 1rem; }
+  .cs-checklist-index ol { columns: 1; }
+  .cs-navigation { grid-template-columns: 1fr; }
   .cs-related li { padding: 1.25rem; }
+}
+
+/* Research Folio: an editorial opening followed by a quiet narrative column. */
+.cs-header-layout { display: block; }
+.cs-header h1 { max-width: 25ch; font-size: clamp(3rem, 5.5vw, 4.875rem); font-weight: 450; line-height: 1.06; letter-spacing: -.05em; margin-bottom: 2.5rem; }
+.cs-art-spread { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); align-items: center; gap: 4rem; margin-block: 2.5rem; }
+.cs-art-spread .artwork-surface { height: 390px; }
+.cs-lead { font-size: clamp(1.125rem, 1.7vw, 1.375rem); line-height: 1.55; color: var(--foreground); }
+.cs-art-note { color: var(--text-muted); font-size: .875rem; margin-top: 1.5rem; }
+.cs-metadata { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; border: 0; border-block: 1px solid var(--border); border-radius: 0; background: transparent; padding: 2rem 0; }
+.cs-metadata > div, .cs-metadata > div:first-child, .cs-metadata > div:last-child { border: 0; padding: 0; }
+.cs-detail--professional .cs-metadata { border-top: 1px solid var(--border); }
+.cs-evidence { border: 0; border-left: 3px solid var(--accent); border-radius: 0; }
+.cs-body { grid-template-columns: 220px minmax(0, 740px); justify-content: space-between; gap: 4rem; padding-top: 3rem; }
+.cs-navigation { border-top: 1px solid var(--border); }
+.cs-navigation > a { border: 0; padding-inline: 0; border-radius: 0; color: var(--text-muted); }
+.cs-overview { background: transparent; border: 0; border-radius: 0; padding: 0; box-shadow: none; }
+.cs-analysis-section { padding-top: 1.5rem; }
+.cs-analysis-section h2 { font-size: clamp(1.75rem, 2.5vw, 2.125rem); font-weight: 450; }
+.cs-overview--professional .cs-analysis-section:nth-child(2) { padding: 2rem; border-left: 0; border-radius: 0; }
+.cs-overview--professional .cs-analysis-section:nth-child(2) > p { font-size: 1.5rem; line-height: 1.5; letter-spacing: -.02em; }
+.cs-tags li { border-radius: 0; }
+.cs-checklist { border: 0; border-block: 1px solid var(--border); border-radius: 0; background: transparent; }
+.cs-checklist > summary { padding-inline: 0; border-radius: 0; font-weight: 500; }
+.cs-checklist-body { padding-inline: 0; }
+.cs-related > ul { gap: 3rem; }
+.cs-related li { display: grid; grid-template-columns: 160px minmax(0, 1fr); align-items: start; gap: 1.5rem; background: transparent; padding: 0; border: 0; border-radius: 0; }
+.cs-related li:focus-within { box-shadow: none; }
+.cs-related .artwork-surface { height: 140px; }
+.cs-related .analytical-artwork figcaption { font-size: .875rem; }
+.cs-related .analytical-artwork figcaption strong { display: none; }
+.cs-related-copy { min-width: 0; }
+.cs-related-copy > p { font-size: .875rem; color: var(--text-muted); margin-top: .5rem; }
+.cs-related h3 { font-size: 1.5rem; margin-top: .75rem; }
+@media (hover: hover) { .cs-related li:hover { box-shadow: none; } }
+@media (max-width: 1100px) {
+  .cs-art-spread { gap: 2rem; }
+  .cs-related li { grid-template-columns: 1fr; }
+  .cs-related .artwork-surface { height: 230px; }
+}
+@media (max-width: 1000px) {
+  .cs-body { grid-template-columns: 1fr; gap: 2rem; }
+  .cs-reading-column { width: 100%; max-width: 740px; margin-inline: auto; }
+  .cs-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 800px) {
+  .cs-art-spread { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cs-art-spread .artwork-surface { height: 280px; }
+  .cs-header h1 { font-size: clamp(2.375rem, 7vw, 3.5rem); }
+}
+@media (max-width: 600px) {
+  .cs-metadata { padding-block: 1.5rem; gap: 1.5rem; }
+  .cs-metadata > div + div { padding: 0; border: 0; }
+  .cs-overview { padding: 0; }
+  .cs-overview--professional .cs-analysis-section:nth-child(2) { padding: 1.5rem; }
+  .cs-overview--professional .cs-analysis-section:nth-child(2) > p { font-size: 1.25rem; line-height: 1.6; }
+  .cs-analysis-section + .cs-analysis-section { margin-top: 2rem; padding-top: 2rem; }
+  .cs-checklist-body { padding-inline: 0; }
+  .cs-related li { padding: 0; }
+}
+@media (max-width: 360px) {
+  .cs-metadata { grid-template-columns: 1fr; }
+  .cs-header h1 { font-size: 2.125rem; }
 }

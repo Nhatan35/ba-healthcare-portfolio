@@ -14,9 +14,9 @@ export default function Home() {
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
         <Hero />
+        <FeaturedProjects />
         <Positioning />
         <Competencies />
-        <FeaturedProjects />
         <Approach />
         <AboutPreview />
         <Contact />

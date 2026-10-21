@@ -7,7 +7,7 @@ export function AboutPreview() {
         <SectionHeading
           id="about-title"
           label="Professional profile"
-          title="A profile in progress."
+          title="The person behind the questions."
           description="A clear introduction to the person, target Business Analyst role, and Healthcare IT focus will appear here once the owner confirms the details."
         />
         <div className="profile-placeholder">

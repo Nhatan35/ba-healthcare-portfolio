@@ -7,8 +7,8 @@ export function Approach() {
       <div className="page-container">
         <SectionHeading
           id="approach-title"
-          label="A proposed problem-solving approach"
-          title="Follow the need. Keep the context."
+          label="How I analyze"
+          title="A question is only the beginning."
           description="A framework for future case studies, with a clear thread from the first question to the validation plan."
         />
         <ol className="approach-grid">

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ProjectStatus } from "./project-status";
+import { AnalyticalArtwork } from "@/components/ui/analytical-artwork";
+import { FragmentNavigation } from "./fragment-navigation";
 import type { CandidateCaseStudy, CaseStudy, CaseStudySection, ProfessionalCaseStudy } from "@/types/case-study";
 import type { ProjectRecord } from "@/types/project";
 import "./case-study-detail.css";
@@ -21,11 +23,18 @@ export function ProjectMetadata({ project }: { project: ProjectRecord }) {
 export function CaseStudyHeader({ project }: { project: ProjectRecord }) {
   return <header className="cs-header">
     <BackToProjects />
+    <div className="cs-header-layout">
+    <div className="cs-header-story">
     <div className="cs-heading-meta"><p className="cs-eyebrow">{project.contentKind === "professional-draft" ? "Professional project draft" : "Case study preparation"}</p><ProjectStatus status={project.verificationStatus} /></div>
     <p className="cs-category">{project.content.en.category}</p>
     <h1>{project.content.en.title}</h1>
-    <p className="cs-lead">{project.content.en.summary}</p>
+    <div className="cs-art-spread">
+      <AnalyticalArtwork kind={project.id} />
+      <div><p className="cs-lead">{project.content.en.summary}</p><p className="cs-art-note">A conceptual view of the subject, not a supplied artifact or evidence of implementation.</p></div>
+    </div>
+    </div>
     <ProjectMetadata project={project} />
+    </div>
   </header>;
 }
 
@@ -91,7 +100,7 @@ export function CandidateOverview({ study }: { study: CandidateCaseStudy }) {
 
 function ProfessionalOverview({ study }: { study: ProfessionalCaseStudy }) {
   const { project, experience } = study;
-  return <div id="overview" className="cs-overview">
+  return <div id="overview" className="cs-overview cs-overview--professional">
     <section aria-labelledby="overview-heading" className="cs-analysis-section">
       <p className="cs-eyebrow">Professional project draft · Owner-attested</p>
       <h2 id="overview-heading" tabIndex={-1}>Project Context &amp; Scope</h2>
@@ -194,17 +203,20 @@ export function RelatedProjects({ projects }: { projects: readonly ProjectRecord
   return <section id="related-projects" aria-labelledby="related-heading" className="cs-related">
     <p className="cs-eyebrow">Continue exploring</p><h2 id="related-heading" tabIndex={-1}>Related projects</h2>
     <ul>{projects.map((project) => <li key={project.id}>
-      <ProjectStatus status={project.verificationStatus} />
-      {project.contentKind === "professional-draft" ? <p>Professional project draft · Owner-attested</p> : null}
+      <AnalyticalArtwork kind={project.id} />
+      <div className="cs-related-copy"><ProjectStatus status={project.verificationStatus} />
+      <p>{project.id} · {project.contentKind === "professional-draft" ? "Professional project draft · Owner-attested" : "Candidate topic"}</p>
       <h3><Link href={`/projects/${project.slug}`}>{project.content.en.title}<span aria-hidden="true"> ↗</span></Link></h3>
       <p>{project.content.en.category}</p>
+      <p>Evidence missing · Publication permission unknown</p></div>
     </li>)}</ul>
     <BackToProjects />
   </section>;
 }
 
 export function CaseStudyDetail({ study, relatedProjects }: { study: CaseStudy; relatedProjects: readonly ProjectRecord[] }) {
-  return <div className="cs-detail page-container">
+  return <div className={`cs-detail page-container${study.contentKind === "professional-draft" ? " cs-detail--professional" : ""}`}>
+    <FragmentNavigation />
     <CaseStudyHeader project={study.project} />
     <EvidenceStatus study={study} />
     <div className="cs-body"><CaseStudySectionNavigation contentKind={study.contentKind} /><div className="cs-reading-column">

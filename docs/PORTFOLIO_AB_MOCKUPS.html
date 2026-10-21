@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>A+B art direction — Local portfolio exploration</title>
+  <style>
+    :root { --paper:#f5f7f4; --ink:#102d3c; --teal:#176b65; --slate:#52656e; --sage:#e7eee9; --mist:#eff2f4; --line:#c8d3d0; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { color-scheme:light; }
+    body { margin:0; background:var(--mist); color:var(--ink); font:17px/1.65 Arial,sans-serif; }
+    a { color:var(--teal); text-underline-offset:5px; text-decoration-thickness:1px; }
+    a:hover { text-decoration-thickness:2px; }
+    a:focus-visible, summary:focus-visible { outline:3px solid var(--teal); outline-offset:5px; }
+    h1,h2,h3,h4,p,figure,dl { margin:0; }
+    h1,h2,h3,h4 { line-height:1.2; font-weight:400; }
+    p + p { margin-top:16px; }
+    p { max-width:68ch; }
+    figure { min-width:0; }
+    .skip { position:absolute; left:16px; top:-100px; padding:12px; background:white; z-index:2; }
+    .skip:focus { top:12px; }
+    .review { padding:32px max(24px,calc((100% - 1280px)/2)); background:var(--ink); color:var(--white); }
+    .review h1 { font:32px/1.2 Georgia,serif; margin:8px 0 16px; }
+    .review p { max-width:90ch; font-size:15px; }
+    .review nav { display:flex; gap:12px 32px; flex-wrap:wrap; margin-top:20px; }
+    .review a { color:var(--white); padding:8px 0; min-height:44px; }
+    .review a:focus-visible { outline-color:var(--white); }
+    .concept { max-width:1440px; margin:56px auto; padding:0 24px; }
+    .concept-label { display:flex; gap:32px; justify-content:space-between; align-items:baseline; margin:0 0 20px; }
+    .concept-label h2 { font-size:23px; font-weight:600; }
+    .concept-label p { max-width:64ch; color:var(--slate); font-size:14px; }
+    .page { background:var(--paper); border:1px solid var(--line); }
+    .inset { padding-inline:clamp(24px,4.5vw,64px); }
+    .site-head { display:flex; gap:24px; justify-content:space-between; align-items:center; padding-block:24px; border-bottom:1px solid var(--line); }
+    .identity { font-size:16px; font-weight:600; letter-spacing:-.3px; }
+    .site-nav { display:flex; flex-wrap:wrap; gap:8px 28px; }
+    .site-nav a { color:var(--ink); font-size:14px; padding:10px 0; text-decoration:none; min-height:44px; }
+    .site-nav a:hover { text-decoration:underline; }
+    .label { color:var(--teal); font-size:14px; margin-bottom:16px; }
+    .display { font-family:Georgia,Cambria,serif; font-size:clamp(42px,5.3vw,76px); line-height:1.06; letter-spacing:-2px; max-width:15ch; text-wrap:balance; }
+    .title { font-family:Georgia,Cambria,serif; font-size:clamp(30px,3vw,40px); letter-spacing:-.7px; }
+    .card-title { font-family:Georgia,Cambria,serif; font-size:30px; line-height:1.22; margin:14px 0 18px; }
+    .lede { font-size:18px; margin-top:28px; color:var(--slate); max-width:48ch; }
+    .small { font-size:14px; color:var(--slate); }
+    .hero { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:64px; align-items:center; padding-block:72px 80px; }
+    .actions { display:flex; gap:16px 24px; align-items:center; flex-wrap:wrap; margin:32px 0 20px; }
+    .actions a { padding:12px 0; min-height:48px; font-size:15px; }
+    .actions .primary { background:var(--ink); color:white; padding:12px 20px; border-radius:4px; text-decoration:none; }
+    .plate { background:var(--sage); padding:32px; border-radius:8px; }
+    .plate-heading { font-size:15px; margin-bottom:28px; color:var(--teal); }
+    .relationship { list-style:none; padding:0; margin:0; }
+    .relationship li { position:relative; margin-left:9px; padding:0 0 30px 28px; border-left:1px solid var(--teal); }
+    .relationship li:last-child { border-left-color:transparent; padding-bottom:0; }
+    .relationship li::before { content:""; position:absolute; left:-5px; top:8px; width:9px; height:9px; background:var(--teal); border-radius:50%; }
+    .relationship strong { display:block; font-weight:400; font-family:Georgia,serif; font-size:25px; line-height:1.25; }
+    .relationship span { display:block; font-size:14px; color:var(--slate); margin-top:8px; }
+    .plate-foot { margin-top:28px; padding-top:18px; border-top:1px solid var(--line); font-size:14px; }
+    figcaption { font-size:13px; color:var(--slate); margin-top:10px; }
+    .section { padding-block:64px; border-top:1px solid var(--line); }
+    .section-head { display:flex; justify-content:space-between; gap:32px; align-items:baseline; margin-bottom:32px; }
+    .section-head p { max-width:43ch; font-size:15px; color:var(--slate); }
+    .lead-work { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:40px; align-items:center; }
+    .support-work { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px; margin-top:48px; }
+    .cover { min-height:232px; padding:32px; display:flex; align-items:center; justify-content:center; background:var(--sage); border-radius:6px; }
+    .cover.mist { background:var(--mist); }
+    .cover.paper { background:#f0f3ed; }
+    .nodes { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:0; width:100%; }
+    .node { flex:1 1 80px; padding:18px 12px; text-align:center; font-size:14px; line-height:1.45; background:var(--paper); border:1px solid #8b9f99; border-radius:4px; }
+    .connector { flex:0 0 18px; height:1px; background:var(--teal); }
+    .activity { display:grid; gap:12px; width:100%; max-width:330px; }
+    .activity div { display:grid; grid-template-columns:20px 1fr; gap:12px; align-items:center; font-size:14px; padding:8px 0; border-bottom:1px solid var(--line); }
+    .activity span { width:12px; height:12px; border:1px solid var(--teal); border-radius:2px; }
+    .activity div:nth-child(2) { margin-left:24px; }
+    .activity div:nth-child(3) { margin-left:48px; }
+    .status { display:flex; gap:6px 16px; flex-wrap:wrap; margin-top:24px; color:var(--slate); font-size:14px; }
+    .status strong { color:var(--teal); font-weight:600; }
+    .facts { margin-top:20px; font-size:14px; color:var(--slate); }
+    .facts span { display:block; }
+    .work-link { display:inline-block; padding:12px 0; margin-top:12px; min-height:48px; font-size:15px; }
+    .method { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px; margin-top:32px; }
+    .method article { border-top:2px solid var(--teal); padding-top:20px; }
+    .method h4 { font:26px/1.2 Georgia,serif; margin-bottom:16px; }
+    .method p { font-size:15px; color:var(--slate); }
+    .method .question { color:var(--ink); }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:64px; }
+    .record { margin-top:16px; }
+    .record > div { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:16px; padding:14px 0; border-bottom:1px solid var(--line); font-size:14px; }
+    dt { color:var(--slate); }
+    dd { margin:0; }
+    .closing { padding-block:40px; display:flex; justify-content:space-between; gap:32px; align-items:start; border-top:1px solid var(--line); }
+    .closing .title { font-size:30px; }
+    .closing p { max-width:48ch; }
+    .library-intro { padding-block:64px 48px; display:grid; grid-template-columns:1.2fr 1fr; gap:64px; align-items:end; }
+    .library-intro .display { font-size:64px; }
+    .collection { padding-bottom:64px; }
+    .collection .lead-work { padding:32px 0 48px; border-block:1px solid var(--line); }
+    .evidence { padding:24px 28px; background:var(--mist); border-left:3px solid var(--teal); border-radius:0 6px 6px 0; }
+    .evidence h4 { font:25px/1.3 Georgia,serif; margin-bottom:12px; }
+    .evidence p { font-size:15px; }
+    .case-head { padding-block:36px 48px; }
+    .back { display:inline-block; min-height:44px; padding:8px 0; margin-bottom:24px; font-size:14px; }
+    .case-grid { display:grid; grid-template-columns:minmax(0,2.2fr) minmax(0,1fr); gap:64px; align-items:start; }
+    .case-grid .display { font-size:clamp(36px,4.4vw,60px); max-width:22ch; line-height:1.12; letter-spacing:-1.5px; }
+    .case-grid .lede { max-width:58ch; }
+    .summary-record { background:var(--sage); padding:24px; border-radius:6px; }
+    .summary-record h4 { font-size:17px; font-weight:600; }
+    .summary-record .record > div { grid-template-columns:1fr; gap:4px; }
+    .summary-record .record > div:last-child { border-bottom:0; }
+    .reading { display:grid; grid-template-columns:minmax(0,2.2fr) minmax(0,1fr); gap:64px; padding-block:64px; }
+    .prose { grid-column:1; grid-row:1; min-width:0; }
+    .prose > section { margin-bottom:40px; }
+    .prose h4 { font:30px/1.25 Georgia,serif; margin-bottom:20px; }
+    .prose p { max-width:64ch; }
+    .contribution { border-left:3px solid var(--teal); padding-left:24px; }
+    .index { grid-column:2; grid-row:1; border-top:1px solid var(--line); padding-top:20px; min-width:0; overflow-wrap:anywhere; }
+    .index h4 { font-size:15px; font-weight:600; margin-bottom:16px; }
+    .index a { display:block; padding:10px 0; min-height:44px; font-size:14px; }
+    .index p { margin-top:20px; }
+    details { border-block:1px solid var(--line); margin-top:40px; }
+    summary { cursor:pointer; padding:20px 4px; font-size:17px; }
+    summary span { font-size:14px; color:var(--slate); display:block; margin-left:20px; }
+    .checklist-body { padding:0 8px 24px; }
+    .checklist-body ol { padding-left:24px; font-size:15px; }
+    .checklist-body li { padding:6px 0; }
+    .checklist-body ul { padding-left:20px; }
+    .related { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:24px; }
+    .related article { display:grid; grid-template-columns:120px minmax(0,1fr); gap:24px; align-items:start; }
+    .mini-cover { padding:20px; background:var(--sage); display:grid; gap:10px; min-height:120px; border-radius:4px; }
+    .mini-cover i { display:block; height:16px; border:1px solid var(--teal); }
+    .mini-cover i:nth-child(2) { margin-left:20px; }
+    .related h4 { font:24px/1.3 Georgia,serif; margin:8px 0; }
+    .annotation { margin-top:16px; color:var(--slate); font-size:14px; max-width:100ch; }
+    footer.review { margin-top:64px; }
+    @media(max-width:1050px) {
+      .hero,.case-grid,.reading { gap:32px; }
+      .case-grid { grid-template-columns:minmax(0,1.8fr) minmax(0,1fr); }
+      .hero { padding-block:48px; }
+      .plate { padding:24px; }
+      .method { grid-template-columns:1fr 1fr; }
+      .library-intro { gap:32px; }
+      .library-intro .display { font-size:52px; }
+      .related article { grid-template-columns:1fr; }
+      .mini-cover { max-width:180px; }
+    }
+    @media(max-width:760px) {
+      .concept { padding:0 12px; margin:32px auto; }
+      .concept-label { display:block; padding-inline:12px; }
+      .concept-label p { margin-top:12px; }
+      .site-head { display:block; }
+      .site-nav { margin-top:12px; gap:8px 24px; }
+      .hero,.lead-work,.support-work,.split,.library-intro,.case-grid,.reading,.related { grid-template-columns:minmax(0,1fr); }
+      .display { font-size:44px; letter-spacing:-1px; }
+      .hero { gap:32px; }
+      .section { padding-block:40px; }
+      .section-head,.closing { display:block; }
+      .section-head p,.closing p { margin-top:16px; }
+      .support-work { gap:40px; }
+      .cover { min-height:190px; padding:24px; }
+      .split { gap:32px; }
+      .library-intro { padding-block:40px; gap:24px; }
+      .library-intro .display { font-size:44px; }
+      .reading { padding-block:40px; gap:32px; }
+      .index { grid-column:1; grid-row:1; }
+      .prose { grid-column:1; grid-row:2; }
+      .case-grid .display { font-size:38px; letter-spacing:-.8px; }
+      .related article { grid-template-columns:96px minmax(0,1fr); gap:20px; }
+      .related h4 { font-size:22px; }
+      .evidence { padding:24px; }
+    }
+    @media(max-width:420px) {
+      .inset { padding-inline:20px; }
+      .display,.library-intro .display { font-size:38px; }
+      .case-grid .display { font-size:32px; overflow-wrap:anywhere; }
+      .method { grid-template-columns:1fr; }
+      .nodes { flex-direction:column; }
+      .node { flex:auto; width:100%; padding:12px; }
+      .connector { flex:0 0 16px; width:1px; }
+      .record > div { grid-template-columns:1fr; gap:4px; }
+      .card-title { font-size:27px; }
+      .related article { grid-template-columns:1fr; }
+      .mini-cover { min-height:80px; }
+    }
+    @media print { body { background:white; } .concept { break-before:page; } .review nav { display:none; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#home">Skip to the concepts</a>
+  <header class="review">
+    <p>Local design exploration · 18 October 2026 · No application changes</p>
+    <h1>Editorial Research + Product &amp; Systems</h1>
+    <p>Three selective layout studies for owner direction review. Existing copy is excerpted to test hierarchy; concept illustrations are not project evidence. This is not a complete website, an accepted design or permission to publish.</p>
+    <nav aria-label="Review concepts"><a href="#home">Homepage</a><a href="#library">Projects Library</a><a href="#c2">C2 detail</a><a href="PORTFOLIO_AB_ART_DIRECTION.md">Direction document</a></nav>
+  </header>
+  <main>
+    <section class="concept" id="home" aria-labelledby="home-concept">
+      <div class="concept-label"><h2 id="home-concept">Homepage concept</h2><p>Editorial opening, connected analysis plate, open project articles. Narrow the browser to explore the stacked composition.</p></div>
+      <div class="page">
+        <div class="site-head inset"><p class="identity">BA Healthcare Portfolio</p><nav class="site-nav" aria-label="Homepage concept"><a href="#home-work">Work</a><a href="#home-method">Approach</a><a href="#home-profile">Profile</a><a href="#home-contact">Contact</a></nav></div>
+        <div class="hero inset">
+          <div><p class="label">Healthcare Business Analysis</p><h3 class="display">Clear thinking.<br>Better healthcare systems.</h3><p class="lede">Exploring the space between people, processes, and technology—where clear requirements help shape better decisions.</p><div class="actions"><a class="primary" href="#home-work">Explore case study drafts</a><a href="#home-method">See the approach</a></div><p class="small">A portfolio in development. Experience and project evidence await verification.</p></div>
+          <figure><div class="plate"><p class="plate-heading">The thread of analysis</p><ol class="relationship"><li><strong>Understand the need</strong><span>People, context &amp; constraints</span></li><li><strong>Define the requirement</strong><span>Rules, behavior &amp; exceptions</span></li><li><strong>Make it testable</strong><span>Criteria, evidence &amp; limitations</span></li></ol><p class="plate-foot">Keep the evidence connected.</p></div><figcaption>Illustrative analysis framework · Not project evidence</figcaption></figure>
+        </div>
+        <section class="section inset" id="home-work" aria-labelledby="home-work-title">
+          <div class="section-head"><h3 class="title" id="home-work-title">Selected work</h3><p>Candidate topics and an owner-attested professional draft. All remain unverified; publication permission is unknown.</p></div>
+          <article class="lead-work">
+            <figure><div class="cover"><div class="nodes" aria-hidden="true"><div class="node">Booking</div><div class="connector"></div><div class="node">Rescheduling</div><div class="connector"></div><div class="node">Capacity</div></div></div><figcaption>Concept illustration · Not project evidence</figcaption></figure>
+            <div><p class="small">C1 · Provisional featured candidate</p><div class="status"><strong>Candidate topic</strong><span>Unverified</span></div><h4 class="card-title">Healthcare Appointment Management</h4><p>How could booking, rescheduling, and capacity conflicts become easier to understand and manage?</p><p class="facts">Proposed exploration. Evidence missing; publication permission unknown.</p></div>
+          </article>
+          <div class="support-work">
+            <article><figure><div class="cover mist"><div class="activity" aria-hidden="true"><div><span></span>Workflow analysis</div><div><span></span>Requirements coordination</div><div><span></span>Progress reporting</div></div></div><figcaption>Concept illustration · Not project evidence</figcaption></figure><div class="status"><strong>C2 · Professional project draft</strong><span>Owner-attested · Unverified</span></div><h4 class="card-title">Communications Integration — Workflow &amp; Requirements Analysis</h4><p>I contribute to an ongoing communications integration project through workflow analysis, API requirements coordination, and progress reporting.</p><p class="facts">Evidence missing; publication permission unknown.</p><a class="work-link" href="#c2">View C2 detail concept</a></article>
+            <article><figure><div class="cover paper"><div class="nodes" aria-hidden="true"><div class="node">Availability</div><div class="connector"></div><div class="node">Coverage</div><div class="connector"></div><div class="node">Approval</div></div></div><figcaption>Concept illustration · Not project evidence</figcaption></figure><div class="status"><strong>C3 · Candidate topic</strong><span>Unverified</span></div><h4 class="card-title">Employee Shift Scheduling</h4><p>How could availability, shift changes, and approval rules support clearer scheduling decisions?</p><p class="facts">Industry unverified. Evidence missing; publication permission unknown.</p></article>
+          </div>
+          <a class="work-link" href="#library">Explore the library concept</a>
+        </section>
+        <section class="section inset" id="home-method" aria-labelledby="method-title"><div class="section-head"><h3 class="title" id="method-title">How I Analyze</h3><p>A proposed analytical approach, not a record of completed project phases.</p></div><div class="method">
+          <article><h4>Understand</h4><p class="question">What needs to change?</p><p>Clarify the context, the people affected, and the evidence behind the problem.</p></article><article><h4>Connect</h4><p class="question">Where does the work meet?</p><p>Map the workflow, the handoffs, and the rules that shape each decision.</p></article><article><h4>Define</h4><p class="question">What should happen?</p><p>Turn needs into scoped requirements, explicit exceptions, and viable options.</p></article><article><h4>Validate</h4><p class="question">How would we know?</p><p>Set testable criteria and distinguish expected value from observed results.</p></article>
+        </div></section>
+        <section class="section inset split" id="home-profile" aria-labelledby="profile-title"><div><h3 class="title" id="profile-title">A profile in progress.</h3><p class="lede">A clear introduction to the person, target Business Analyst role, and Healthcare IT focus will appear here once the owner confirms the details.</p></div><div><p class="small">Identity details · owner input required</p><dl class="record"><div><dt>Name</dt><dd>[Owner input required]</dd></div><div><dt>Target BA role</dt><dd>[Confirm preferred role title]</dd></div><div><dt>Healthcare IT specialization</dt><dd>[Confirm specific focus]</dd></div><div><dt>Professional summary</dt><dd>[Add after background and contribution are verified]</dd></div><div><dt>Resume</dt><dd>Awaiting an approved public version</dd></div></dl></div></section>
+        <section class="closing inset" id="home-contact" aria-labelledby="contact-title"><h3 class="title" id="contact-title">Good work starts<br>with a clear question.</h3><div><p>Contact details coming soon</p><p class="small">A professional contact channel will be added after owner approval.</p><a class="work-link" href="#home-work">Explore the draft collection</a></div></section>
+      </div><p class="annotation">Study note: profile availability is deliberately truthful. No portrait, credentials or contact action has been invented. The current competency section and full scope disclosures remain in the application and would be retained in a later implementation.</p>
+    </section>
+
+    <section class="concept" id="library" aria-labelledby="library-concept">
+      <div class="concept-label"><h2 id="library-concept">Projects Library concept</h2><p>A curated sequence with consistent cover grammar and explicit provenance. C1/C2/C3 ordering is unchanged.</p></div>
+      <div class="page">
+        <div class="site-head inset"><p class="identity">BA Healthcare Portfolio</p><nav class="site-nav" aria-label="Library concept"><a href="#home">Home concept</a><a href="#c2">C2 detail concept</a></nav></div>
+        <div class="library-intro inset"><h3 class="display">Projects library</h3><p>Candidate topics and an owner-attested professional draft. Visual concepts below explain the subject areas; they are not supplied project artifacts.</p></div>
+        <div class="collection inset">
+          <article class="lead-work"><figure><div class="cover"><div class="nodes" aria-hidden="true"><div class="node">Booking</div><div class="connector"></div><div class="node">Rescheduling</div><div class="connector"></div><div class="node">Capacity</div></div></div><figcaption>Concept illustration · Not project evidence</figcaption></figure><div><p class="small">C1 · Provisional featured candidate</p><div class="status"><strong>Candidate topic</strong><span>Unverified</span></div><h4 class="card-title">Healthcare Appointment Management</h4><p>How could booking, rescheduling, and capacity conflicts become easier to understand and manage?</p><p class="facts"><span>Provenance unknown · Evidence missing</span><span>Publication permission unknown</span></p></div></article>
+          <div class="support-work">
+            <article><figure><div class="cover mist"><div class="activity" aria-hidden="true"><div><span></span>Workflow analysis</div><div><span></span>Requirements coordination</div><div><span></span>Progress reporting</div></div></div><figcaption>Concept illustration · Not project evidence</figcaption></figure><div class="status"><strong>C2 · Professional project draft</strong><span>Owner-attested · Unverified</span></div><h4 class="card-title">Communications Integration — Workflow &amp; Requirements Analysis</h4><p>I contribute to an ongoing communications integration project through workflow analysis, API requirements coordination, and progress reporting.</p><p class="facts"><span>Real · Owner-attested · Evidence missing</span><span>Publication permission unknown</span></p><a class="work-link" href="#c2">View C2 detail concept</a></article>
+            <article><figure><div class="cover paper"><div class="nodes" aria-hidden="true"><div class="node">Availability</div><div class="connector"></div><div class="node">Coverage</div><div class="connector"></div><div class="node">Approval</div></div></div><figcaption>Concept illustration · Not project evidence</figcaption></figure><div class="status"><strong>C3 · Candidate topic</strong><span>Unverified</span></div><h4 class="card-title">Employee Shift Scheduling</h4><p>How could availability, shift changes, and approval rules support clearer scheduling decisions?</p><p class="facts"><span>Workforce operations · Industry unverified</span><span>Provenance unknown · Evidence missing</span><span>Publication permission unknown</span></p></article>
+          </div>
+        </div>
+        <div class="section inset split"><h3 class="title">Read the work<br>with its context.</h3><div><p><strong>Candidate topics</strong> describe proposed exploration, not confirmed experience.</p><p><strong>Professional project draft</strong> distinguishes owner-attested participation from independently reviewed evidence.</p><p class="small">All three projects remain unverified and not cleared for publication. The complete existing status guide remains required in a later implementation.</p></div></div>
+      </div><p class="annotation">Study note: only the C2 concept is linked in this three-screen exploration. Actual C1/C3 detail links, complete scope text and disclosures must remain in the application. Covers and metadata align; narrative heights are allowed to vary.</p>
+    </section>
+
+    <section class="concept" id="c2" aria-labelledby="c2-concept">
+      <div class="concept-label"><h2 id="c2-concept">C2 Case Study Detail concept</h2><p>Full anonymous title, compact summary, open reading column and secondary checklist. Narrative excerpts retain existing wording.</p></div>
+      <div class="page">
+        <div class="site-head inset"><p class="identity">BA Healthcare Portfolio</p><nav class="site-nav" aria-label="Case concept"><a href="#home">Home concept</a><a href="#library">Library concept</a></nav></div>
+        <div class="case-head inset"><a class="back" href="#library">Back to Projects concept</a><div class="case-grid"><div><p class="label">Professional project draft · Unverified</p><h3 class="display">Communications Integration — Workflow &amp; Requirements Analysis</h3><p class="lede">I contribute to an ongoing communications integration project through workflow analysis, API requirements coordination, and progress reporting.</p></div><aside class="summary-record" aria-label="C2 summary"><h4>Project record</h4><dl class="record"><div><dt>Project reference</dt><dd>C2 · Professional project draft</dd></div><div><dt>Real or simulated</dt><dd>Real · Owner-attested</dd></div><div><dt>Supporting artifacts</dt><dd>Artifacts not supplied</dd></div><div><dt>Publication permission</dt><dd>Unknown · Not cleared</dd></div></dl></aside></div></div>
+        <div class="inset"><aside class="evidence" aria-labelledby="evidence-title"><h4 id="evidence-title">Owner-attested experience; evidence review pending.</h4><p>My participation and activities are owner-attested. Supporting project artifacts have not been independently reviewed for this portfolio. Implementation outcomes and publication permission remain unconfirmed.</p></aside></div>
+        <div class="reading inset">
+          <nav class="index" aria-label="C2 study sections"><h4>On this page</h4><a href="#study-context">Project context &amp; scope</a><a href="#study-contribution">Personal contribution</a><a href="#study-workflow">Workflow analysis &amp; API coordination</a><a href="#study-artifacts">Reported artifacts &amp; evidence</a><a href="#study-verification">Verification &amp; publication status</a><a href="#study-checklist">Preparation checklist</a><a href="#study-related">Related projects</a><p class="small">Layout study only. The application URL remains /projects/healthcare-omnichannel-integration.</p></nav>
+          <div class="prose">
+            <section id="study-context"><h4>Project Context &amp; Scope</h4><p>I joined an integration project that was already in progress.</p><p>The scope of my work includes inbound and outbound workflows and related customer relationship management (CRM) processes.</p></section>
+            <section class="contribution" id="study-contribution"><h4>Personal Contribution</h4><p>I coordinate integration requirements and participate in cross-team requirements discussions.</p></section>
+            <section id="study-workflow"><h4>Workflow Analysis &amp; API Coordination</h4><p>My work includes analyzing inbound and outbound workflows and related CRM processes.</p><p>I work with an integration partner to clarify application programming interface (API) requirements and information needed for the integration.</p></section>
+            <section id="study-artifacts"><h4>Reported Artifacts &amp; Evidence</h4><p>I have created flowcharts, work timelines, and weekly progress reports as part of this project.</p><p class="small">Reported as created; not supplied or independently reviewed.</p></section>
+            <section id="study-verification"><h4>Verification &amp; Publication Status</h4><p class="label">Unverified</p><dl class="record"><div><dt>Contribution source</dt><dd>Owner-attested participation and activities.</dd></div><div><dt>Supporting artifacts</dt><dd>Reported as created; not supplied or independently reviewed.</dd></div><div><dt>Acceptance, production completion &amp; outcomes</dt><dd>Not confirmed.</dd></div><div><dt>Publication permission</dt><dd>Unknown · Not cleared. Anonymous local review does not authorize publication.</dd></div></dl></section>
+            <details id="study-checklist"><summary>Full BA Analysis Preparation Checklist<span>19 canonical sections · Evidence still required</span></summary><div class="checklist-body"><p class="small">Exploration index only. Full content, statuses, nested topics and production anchors remain unchanged in the current application.</p><ol><li>Business context</li><li>Problem identification</li><li>Business goals</li><li>Stakeholder analysis</li><li>Discovery and clarification</li><li>As-Is process</li><li>Root cause analysis</li><li>To-Be process</li><li>User story mapping</li><li>Business requirements</li><li>Functional and non-functional requirements<ul><li>Functional requirements</li><li>Non-functional requirements</li><li>System interactions</li></ul></li><li>Business rules</li><li>BPMN / process flow</li><li>Wireframes</li><li>Exceptions and edge cases</li><li>Acceptance criteria</li><li>Decisions and trade-offs</li><li>Validation and outcomes<ul><li>Evidence and validation</li><li>Outcomes</li></ul></li><li>Lessons learned</li></ol></div></details>
+          </div>
+        </div>
+        <section class="section inset" id="study-related" aria-labelledby="related-title"><h3 class="title" id="related-title">Related projects</h3><div class="related"><article><div class="mini-cover" aria-hidden="true"><i></i><i></i><i></i></div><div><p class="small">C1 · Candidate topic · Unverified</p><h4>Healthcare Appointment Management</h4><p class="small">Evidence missing; publication permission unknown.</p></div></article><article><div class="mini-cover" aria-hidden="true"><i></i><i></i><i></i></div><div><p class="small">C3 · Candidate topic · Unverified</p><h4>Employee Shift Scheduling</h4><p class="small">Industry unverified. Evidence missing; publication permission unknown.</p></div></article></div><p class="small" style="margin-top:20px">Concept illustrations · Not project evidence</p><a class="work-link" href="#library">Back to Projects concept</a></section>
+      </div><p class="annotation">Study note: the checklist is functional for density review. This abbreviated concept does not replace the full narrative, evidence questions, canonical content or deep-link behavior. No outcome metric or approval is implied by the visual emphasis.</p>
+    </section>
+  </main>
+  <footer class="review"><p>Ready for owner direction review. Local exploration only; no implementation approval, evidence verification or publication permission recorded.</p><nav aria-label="Review return"><a href="#home">Review homepage</a><a href="PORTFOLIO_AB_ART_DIRECTION.md">Read the direction document</a></nav></footer>
+</body>
+</html>

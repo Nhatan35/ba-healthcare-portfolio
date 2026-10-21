@@ -6,6 +6,9 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { projectPreviews } from "@/content/projects/previews";
 import { getCaseStudy, getRelatedProjects } from "@/lib/case-studies";
 
+// The collection is defined at build time; unknown slugs use the rendered 404.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return projectPreviews.map(({ slug }) => ({ slug }));
 }

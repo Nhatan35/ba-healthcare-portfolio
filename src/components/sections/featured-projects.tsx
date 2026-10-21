@@ -9,8 +9,8 @@ export function FeaturedProjects() {
         <div className="projects-heading">
           <SectionHeading
             id="projects-title"
-            label="Featured case study previews"
-            title="Projects and analysis."
+            label="Selected work"
+            title="Selected inquiries."
             description="Explore project drafts and candidate topics, with their contribution and evidence status clearly identified."
           />
           <p className="draft-note">Draft collection<br /><span>Evidence review pending</span></p>
